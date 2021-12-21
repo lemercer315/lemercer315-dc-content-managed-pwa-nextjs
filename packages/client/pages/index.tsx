@@ -41,6 +41,8 @@ const Index: NextPage<Props> = (props: Props) => {
     setSidebarOpen(!sidebarOpen);
   }
   
+  const navigationLinks = navigation.links;
+  
   /** Data fixes if not loaded **/
   let defaultNavContent = navigation?.navigation?.links || [ { title: 'Error: No Navigation Slot with content for delivery key "slots/navigation"', href: '/' }]
   const navigationLinks = defaultNavContent;
@@ -106,7 +108,7 @@ const Index: NextPage<Props> = (props: Props) => {
 }
 
 Index.getInitialProps = async (context) => {
-  const navigation = fetchContent('slots/navigation', context);
+  const navigation = fetchContent('global/navigation', context);
   const slot = fetchContent('slots/homepage-hero', context);
 
   return {
